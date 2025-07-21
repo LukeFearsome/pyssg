@@ -24,7 +24,8 @@ def markdown_to_htmlnodes(markdown):
                 parent_nodes.append(code_node)
                 continue
             case BlockType.Q:
-                cleaned_text = block.replace('>','')
+                cleaned_text = block.replace('>','').strip()
+                parent_nodes.append(ParentNode("blockquote",block_to_children(cleaned_text)))
                 continue
             case BlockType.UL:
                 item_nodes = list_processor(block.split('\n'))
@@ -50,6 +51,7 @@ def list_processor(items):
         cleaned_item = ' '.join(item.strip().split(' ')[1:])
         children = block_to_children(cleaned_item)
         item_nodes.append(ParentNode("li",children))
+    return item_nodes
 
 def heading_processor(block):
     i = 0

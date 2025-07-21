@@ -34,7 +34,7 @@ def textnode_to_htmlnode(text_node):
         case TextType.LINK:
             return LeafNode('a',text_node.text,{"href":text_node.url})
         case TextType.IMAGE:
-            return LeafNode("img",None,{"src":text_node.url,"alt":text_node.text})
+            return LeafNode("img",'',{"src":text_node.url,"alt":text_node.text})
 
 def split_nodes_delimiter(old_nodes, delimiter, text_type):
     for i,node in enumerate(old_nodes):

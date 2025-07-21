@@ -1,8 +1,9 @@
-from textnode import TextNode,TextType
+from src.copy_static import copy_static
+from src.create_html import recursive_page_generation
 
 def main():
-    node = TextNode("sample text", TextType.BOLD,"www.test.net")
-    print(node)
-
+    copy_static()
+    recursive_page_generation("content","template.html","public")
+    
 if __name__ == "__main__":
     main()
