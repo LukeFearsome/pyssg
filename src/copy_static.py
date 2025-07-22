@@ -1,15 +1,15 @@
 import os
 import shutil
 
-def copy_static():
-    public = "./public/"
+def copy_static(dest):
+    public = dest
     static = "./static/"
 
     shutil.rmtree(public)
     os.mkdir(public)
 
     copy_dir(static,public)
-
+    
 def copy_dir(src,dst):
     if not os.path.exists(dst):
         print(f"Creating directory: {dst}")
